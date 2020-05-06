@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block tour %}
+  <main class="container">
+<!--    <h1>Куба: Marina Lake Hotel & Spa 62000:</h1>-->
+
+<!--    <p>6 ночей</p>-->
+
+<!--    <p>Стоимость: 62000 Р</p>-->
+
+<!--    <p>Отель выглядит уютно. Он был построен из красного соснового дерева и украшен синими камнями.-->
+<!--  Высокие округлые окна добавляют общий стиль дома и были добавлены в дом в довольно симметричном образце.</p>-->
+
+    <section class="mt-3 pb-5">
+      <h1 class="display-4 mt-4">{{ tour.country }}: {{ tour.title }}</h1>
+      <!-- HERO -->
+        <div class="row">
+            <a href="/departures/{{ tour.departure }}/"><p class="lead mt-4 ml-3 badge badge-pill badge-primary">{{ departures[tour.departure] }}</p></a>
+            <p class="lead mt-4 ml-3 badge badge-pill badge-primary">{{ tour.nights }} ночей</p>
+            <p class="lead mt-4 ml-3 badge badge-pill badge-primary">{{ tour.price }} &#8381</p>
+        </div>
+      <img src="{{ tour.picture }}" class="w-75" alt="">
+      <p class="my-4 w-75">{{ tour.description }}</p>
+      <a href="#" class="btn btn-success btn-lg">Купить тур</a>
+    </section>
+  </main>{% endblock %}

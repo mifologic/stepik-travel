@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block departure %}
+<main class="container mt-3">
+
+    <h1 class="display-5 mt-4">Летим {{ direction }}</h1>
+    <p class="mb-4">Найдено {{ tour.items()|length }} тура, от {{ price|min }}&#8381 до
+        {{ price|max }}&#8381 и от {{ night|min }} до {{ night|max }} ночей</p>
+    <!-- CARDS -->
+    <h1>Вам подойдут туры:</h1>
+    <div class="row mt-5">{% for key, hotel in tour.items() %}
+        <div class="col-4">
+            <div class="card mb-4">
+                <img class="card-img-top img-fluid" src="{{ hotel.picture }}" alt="">
+                <div class="card-body">
+                    <h2 class="h6 card-title">{{ hotel.country }}: {{ hotel.title }}</h2>
+                    <p class="card-text">{{ (hotel.description|truncate(95)) }}</p>
+                    <div class="row">
+                        <div class="col-9"><p>{{hotel.date}}, {{hotel.nights}} дней, {{hotel.price}}&#8381</p></div>
+                        <div class="col-3"><p> {{hotel.stars}} &#9733</p></div>
+                    </div>
+                <a href="/tours/{{ key }}/" class="btn btn-sm btn-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</main>{% endblock %}

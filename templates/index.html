@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block main_index %}<main class="container mt-3">
+    <!-- HERO -->
+    <section class="jumbotron text-center mt-4">
+      <h1 class="display-4">{{ title }}</h1>
+      <p class="lead">{{ subtitle }}</p>
+      <p class="mt-5 w-50 mx-auto">{{ description }}</p>
+    </section>
+    <!-- CARDS -->
+      <div class="row mt-5">{% for key, hotel in tours.items() %}
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="embed-responsive embed-responsive-16by9">
+             <img class="card-img-top embed-responsive-item" src="{{ hotel.picture }}" alt="" />
+          </div>          
+          <div class="card-body">
+            <h2 class="h6 card-title">{{ hotel.country }}: <a href="/tours/{{key}}/">{{ hotel.title }}</a></h2>
+            <p class="card-text">{{ (hotel.description|truncate(95)) }}</p>
+            <div class="row">
+              <div class="col-9"><p>{{hotel.date}}, {{hotel.nights}} дней, {{hotel.price}}&#8381</p></div>
+              <div class="col-3"><p> {{hotel.stars}} &#9733</p></div></div>
+          </div>
+        </div>
+      </div>{% endfor %}
+    </div>
+  </main>{% endblock %}
